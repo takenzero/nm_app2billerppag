@@ -38,7 +38,7 @@ public class JobHandler extends Thread{
     @Override
     public void run(){        
         try {
-            String SQL = "SELECT * FROM TAB";
+            String SQL = "SELECT * FROM "+this.TB_NAME;
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
             Thread.sleep(this.TIME_JOB);
