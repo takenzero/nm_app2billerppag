@@ -24,7 +24,7 @@ public class ReqToBillerPpag {
     private ReqToBillerPpag() throws SQLException{
         this.sess = new SetSession();
         this.gv = new GlobalVar();
-        this.login_sess = this.sess.GetSessionValue("LOGIN");
+        this.login_sess = Boolean.parseBoolean(this.sess.GetSessionValue("LOGIN"));
     }
     
     public void doReqToBillerPpag(String message){

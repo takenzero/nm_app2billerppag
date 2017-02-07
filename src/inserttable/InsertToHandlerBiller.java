@@ -51,7 +51,7 @@ public class InsertToHandlerBiller extends Thread{
             String tbl = this.db+".dbo."+this.TB_NAME;
             
             String SQL = "INSERT INTO "+tbl+" (HOST_SENDER, MESSASGE, PRODUCT_CODE, DESTINATION_ID, STATUS, SYS_CREATION_DATE, SYS_DATE_STATUS, DESCRIPTION) VALUES(?,?,?,?,?,?,?,?)";
-            //System.out.println(this.getName()+": "+SQL);
+            
             PreparedStatement st = conn.prepareStatement(SQL);
             st.setString(1, this.host);
             st.setString(2, this.msge);

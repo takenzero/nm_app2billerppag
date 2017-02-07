@@ -44,13 +44,13 @@ public class SetSession {
         }
     }
     
-    public Boolean GetSessionValue(String key) throws SQLException{
+    public String GetSessionValue(String key) throws SQLException{
         String tbl = this.db+".dbo."+this.TB_NAME;
         String SQL = "SELECT SESSION_VALUE FROM "+tbl+" WHERE SESSION_KEY='"+key+"'";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(SQL);
         rs.next();
         
-        return Boolean.parseBoolean(rs.getString("SESSION_VALUE"));
+        return rs.getString("SESSION_VALUE");
     }
 }
