@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import nmlib.GlobalVar;
 import nmlib.JDBCConnection;
 import java.sql.Statement;
+import nmlib.SetSession;
 
 /**
  *
@@ -22,17 +23,21 @@ import java.sql.Statement;
 public class JobHandler extends Thread{
     JDBCConnection cn = new JDBCConnection();
     private final Connection conn;
+    private final SetSession sess;
+    private final Boolean login_sess;
     private final GlobalVar gv;
     private final String db;
     private final String DB_NAME = "DB_NAME";
     private final String TB_NAME = "NM_HANDLER2BILLER";
     private final int TIME_JOB;
     
-    public JobHandler() throws SQLDataException{
+    public JobHandler() throws SQLDataException, SQLException{
         conn = cn.Connect();
+        sess = new SetSession();
         gv = new GlobalVar();
         db = gv.GetValueVar(DB_NAME);
         TIME_JOB = Integer.parseInt(gv.GetValueVar("TIME_JOBHADNLER"));
+        login_sess = Boolean.parseBoolean(this.sess.GetSessionValue("LOGIN"));
     }
     
     @Override
