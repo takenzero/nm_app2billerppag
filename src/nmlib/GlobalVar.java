@@ -22,6 +22,7 @@ public class GlobalVar {
         gv.put("USER_JDBC", "mtahir");
         gv.put("PASS_JDBC", "mtahir123");
         gv.put("DB_NAME", "NMDB");
+        gv.put("DB_OTOMAX", "otomax");
         gv.put("TIME_JOBHADNLER", "60000");
         gv.put("URL_PPAG", "https://202.152.12.106:7227/PPAG.denom/");
         gv.put("CONTEXT_LOGIN_PPAG", "loginmitrasms");

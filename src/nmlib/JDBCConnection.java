@@ -25,6 +25,7 @@ public class JDBCConnection {
     private final String USER_JDBC           = "USER_JDBC";
     private final String PASS_JDBC           = "PASS_JDBC";
     private final String DB_NAME             = "DB_NAME";
+    private final String DB_OTOMAX           = "DB_OTOMAX";
     
     private final String dn;
     private final String jd;
@@ -34,7 +35,7 @@ public class JDBCConnection {
     private final String pj;
     private final String db;
     
-    public JDBCConnection(){
+    public JDBCConnection(String dbuse){
         this.gv = new GlobalVar();
         
         this.dn = gv.GetValueVar(DRIVER_NAME);
@@ -43,7 +44,11 @@ public class JDBCConnection {
         this.is = gv.GetValueVar(INTEGRATED_SECURITY);
         this.uj = gv.GetValueVar(USER_JDBC);
         this.pj = gv.GetValueVar(PASS_JDBC);
-        this.db = gv.GetValueVar(DB_NAME);
+        if (dbuse.equals("NM")){
+            this.db = gv.GetValueVar(DB_NAME);
+        }else{
+            this.db = gv.GetValueVar(DB_OTOMAX);
+        }
     }
     
     public Connection Connect() throws SQLDataException{

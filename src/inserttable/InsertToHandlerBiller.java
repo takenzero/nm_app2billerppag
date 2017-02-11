@@ -18,7 +18,8 @@ import nmlib.JDBCConnection;
  * @author TAKEN
  */
 public class InsertToHandlerBiller extends Thread{
-    JDBCConnection cn = new JDBCConnection();
+    private final String dbuse = "NM";
+    JDBCConnection cn = new JDBCConnection(dbuse);
     private final Connection conn;
     private final GlobalVar gv;
     private final String db;

@@ -21,7 +21,8 @@ import nmlib.SetSession;
  * @author TAKEN
  */
 public class JobHandler extends Thread{
-    JDBCConnection cn = new JDBCConnection();
+    private final String dbuse = "NM";
+    JDBCConnection cn = new JDBCConnection(dbuse);
     private final Connection conn;
     private final SetSession sess;
     private final Boolean login_sess;
