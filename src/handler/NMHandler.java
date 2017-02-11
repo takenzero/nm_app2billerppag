@@ -8,6 +8,7 @@ package handler;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import inserttable.InsertToHandlerBiller;
+import inserttable.InsertToOtoTable;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -87,8 +88,12 @@ public class NMHandler implements HttpHandler{
         System.out.println(response);
         try (OutputStream os = t.getResponseBody()) {
             os.write(response.getBytes());
+            InsertToOtoTable a = new InsertToOtoTable("Transaksi Anda "+this.prod+"."+this.dest+" SUKSES. SN:1234-1234-1234-1234-1234-1234", "INBOX_TEMP");
+            a.start();
         }catch(IOException e){
             System.out.println(e.getMessage());
+        } catch (SQLDataException ex) {
+            Logger.getLogger(NMHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
